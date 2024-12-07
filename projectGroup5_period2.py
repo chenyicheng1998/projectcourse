@@ -309,9 +309,23 @@ def get_ranking_table():
 # To get weather of a city
 @app.route('/get_weather/<ident>')
 def get_weather(ident):
-    def check_weather(city_name):
+    # def check_weather(city_name):
+    #     api_key = "6fb8418b9a666dbde2c8889c86619ee6"  # OpenWeatherMap API key
+    #     url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}&units=metric"  # metric for Celsius temperature
+    #
+    #     response = requests.get(url)
+    #
+    #     if response.status_code == 200:
+    #         data = response.json()
+    #         return data
+    #     else:
+    #         print(f"Failed to retrieve weather data. Status code: {response.status_code}")
+    #         return False  # Treat as bad weather if request fails
+
+
+    def check_weather(lat, lon):
         api_key = "6fb8418b9a666dbde2c8889c86619ee6"  # OpenWeatherMap API key
-        url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}&units=metric"  # metric for Celsius temperature
+        url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=metric"  # metric for Celsius temperature
 
         response = requests.get(url)
 
@@ -322,18 +336,25 @@ def get_weather(ident):
             print(f"Failed to retrieve weather data. Status code: {response.status_code}")
             return False  # Treat as bad weather if request fails
 
-    sql = f'''SELECT municipality
-                FROM airport
-                        WHERE ident=%s
-                '''
+
+
+    # sql = f'''SELECT municipality
+    #             FROM airport
+    #                     WHERE ident=%s
+    #             '''
+    sql = f'''SELECT municipality, latitude_deg, longitude_deg
+                    FROM airport
+                            WHERE ident=%s
+                    '''
     cursor = db.get_conn().cursor(dictionary=True)
     cursor.execute(sql, (ident, ))
     result = cursor.fetchall()
     city_name = result[0]['municipality']
+    lat, lon = result[0]['latitude_deg'], result[0]['longitude_deg']
 
     print(city_name)
-    data = check_weather(city_name)
-
+    # data = check_weather(city_name)
+    data = check_weather(lat, lon)
     return data
 
 
