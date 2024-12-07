@@ -192,6 +192,7 @@ async function refresh_new_marker(player_id, player, number_of_play) {
                                 templateAirportMarkers.length = 0;
 
                                 // show the ranking table
+                                document.getElementById("weather").innerHTML = ``;
                                 alert ("You Finished the Game!!!");
                                 response = await fetch(`http://127.0.0.1:${port}/get_ranking_table`);
                                 let ranking_table = await response.json();
@@ -199,9 +200,10 @@ async function refresh_new_marker(player_id, player, number_of_play) {
 
 
                                 let html = "<table border='1' style='border-collapse:collapse;'>";
-                                html += "<tr><th>Player ID</th><th>Player</th><th>Total Distance</th></tr>";
-                                ranking_table.forEach(row => {
+                                html += "<tr><th>Ranking</th><th>Player ID</th><th>Player</th><th>Total Distance</th></tr>";
+                                ranking_table.forEach((row, index) => {
                                   html += `<tr>
+                                            <td>${index + 1}</td>
                                             <td>${row.player_id}</td>
                                             <td>${row.player}</td>
                                             <td>${row.total_distance}</td>
