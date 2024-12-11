@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Round World Trip</title>
+    <link rel="stylesheet" href="CSS/example.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="home.html" class="logo">Round World Trip</a>
+        <nav>
+            <ul>
+                <li><a href="about.html">About Game</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="game-container">
+        <section class="form-section">
+            <form id="playerForm">
+                <input id="player" name="q" type="text" placeholder="Enter your name">
+                <input type="submit" value="Start Game">
+            </form>
+        </section>
+
+        <section class="map-section">
+            <div id="earth"></div>
+        </section>
+
+        <section class="info-section">
+            <div id="weather" class="info-box">
+                <h3>Weather</h3>
+                <p>Weather information will load here...</p>
+            </div>
+            <div id="rankingTable" class="info-box">
+                <h3>Ranking</h3>
+                <p>Ranking data will load here...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://www.webglearth.com/v2/api.js"></script>
+    <script src="example.js"></script>
+</body>
+</html>

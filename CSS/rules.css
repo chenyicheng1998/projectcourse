@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e5e2e2;
+    color: #333;
+}
+/* Top Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.navbar .logo:hover {
+    color: #3498db;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #3498db;
+}
+
+/* Main Content Styling */
+
+.content h1 {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rules-list {
+    list-style: decimal inside;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.rules-list li {
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.rules-list li strong {
+    color: #2c3e50;
+}
+
+.rules-list ul {
+    list-style: disc inside;
+    margin: 10px 0 10px 20px;
+}
+
+.rules-list ul li {
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .content {
+        margin: 20px;
+        padding: 15px;
+    }
+}
